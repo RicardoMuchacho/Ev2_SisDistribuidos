@@ -1,0 +1,96 @@
+version: "3"
+
+networks:
+  network1:
+    driver: bridge
+
+services:
+  log:
+    container_name: elk
+    build: ./misc/elk
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+      - "7777:7777/udp"
+    networks:
+      - network1
+
+  haproxy:
+    container_name: proxy1
+    ports:
+      - "6000:6000"
+    build: ./haproxy
+    depends_on:
+      - mobile_bff
+      - desktop_bff
+    networks:
+      - network1
+
+  haproxy_secondary:
+    container_name: proxy2
+    ports:
+      - "6001:6001"
+    build: ./haproxy_secondary
+    depends_on:
+      - auth_api
+      - animals_api
+    networks:
+      - network1
+
+  desktop_bff:
+    container_name: desktop_bff
+
+    build: ./desktop_bff
+    ports:
+      - "4001:4001"
+    depends_on:
+      - auth_api
+      - animals_api
+      - log
+    environment:
+      - LOGSTASH=${LOGSTASH}
+    networks:
+      - network1
+
+  mobile_bff:
+    container_name: mobile_bff
+    build: ./mobile_bff
+    ports:
+      - "4000:4000"
+    depends_on:
+      - auth_api
+      - animals_api
+      - log
+    environment:
+      - LOGSTASH=${LOGSTASH}
+    networks:
+      - network1
+
+  animals_api:
+    container_name: animals_api
+    build: ./animals_api
+    ports:
+      - "4003:4003"
+    depends_on:
+      - log
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - TOKEN_KEY=${TOKEN_KEY}
+      - LOGSTASH=${LOGSTASH}
+    networks:
+      - network1
+
+  auth_api:
+    container_name: auth_api
+    build: ./auth
+    ports:
+      - "4002:4002"
+    depends_on:
+      - log
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - TOKEN_KEY=${TOKEN_KEY}
+      - LOGSTASH=${LOGSTASH}
+    networks:
+      - network1

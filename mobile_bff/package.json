@@ -1,0 +1,25 @@
+{
+  "name": "mobile_bff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "http-proxy-middleware": "^2.0.4",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.9"
+  },
+  "engines": {
+    "node": "17.8.0"
+  }
+}

@@ -1,0 +1,24 @@
+Register:
+curl -X POST http://localhost:6000/mobile/auth/register -H "Content-Type: application/json" -d '{"username": "test", "pass": "123"}'
+
+Login:
+curl -X POST http://localhost:6000/mobile/auth/login -H 'Content-Type: application/json' -d '{"username":"test","pass":"123"}'| json_pp
+
+Authenticate (copiar token):
+curl -X POST http://localhost:6000/mobile/auth/authenticate -H 'Content-Type: application/json' -d '{"username":"test","pass":"123"}'| json_pp
+
+Auth_test:
+curl -X GET http://localhost:6000/mobile/auth/auth_test  -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjQ5MjkyNzY4LCJleHAiOjE2NDk0NjU1Njh9.zrpEGtn1p4XtP3sBXVQDwS90CTBnV9bSm4tlCVxqsig'
+   
+
+Get Animals:
+curl http://localhost:6000/mobile/api/animals | json_pp
+
+Post Animal:
+curl -X POST http://localhost:6000/mobile/api/animals -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjUwNTA0MTc3LCJleHAiOjE2NTA2NzY5Nzd9.V1H2lyq1hqirymJ81zveNu50rx4AGyyYKAiSVI5UdbE' -d '{"name":"snake"}'| json_pp
+
+Delete Animal
+curl -X DELETE http://localhost:6000/mobile/api/animals -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjQ5MjkyNzY4LCJleHAiOjE2NDk0NjU1Njh9.zrpEGtn1p4XtP3sBXVQDwS90CTBnV9bSm4tlCVxqsig' -d '{"name":"a"}'| json_pp
+
+Update Animal
+curl -X PUT http://localhost:6000/mobile/api/animals -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjQ5MjkyNzY4LCJleHAiOjE2NDk0NjU1Njh9.zrpEGtn1p4XtP3sBXVQDwS90CTBnV9bSm4tlCVxqsig' -d '{"prev_name": "snake","new_name": "bird"}'| json_pp
