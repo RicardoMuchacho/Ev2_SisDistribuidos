@@ -32,7 +32,7 @@ app.use(morgan("dev"));
 dotenv.config();
 
 router.get("/", (req, res) => {
-  //
+  res.send("Auth api working");
 });
 
 router.post("/login", async (req, res) => {

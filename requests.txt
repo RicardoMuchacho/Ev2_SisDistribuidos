@@ -8,11 +8,11 @@ Authenticate (copiar token):
 curl -X POST http://localhost:6000/mobile/auth/authenticate -H 'Content-Type: application/json' -d '{"username":"test","pass":"123"}'| json_pp
 
 Auth_test:
-curl -X GET http://localhost:6000/mobile/auth/auth_test  -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjQ5MjkyNzY4LCJleHAiOjE2NDk0NjU1Njh9.zrpEGtn1p4XtP3sBXVQDwS90CTBnV9bSm4tlCVxqsig'
+curl -X GET http://localhost:6000/mobile/auth/auth_test  -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjUwNTg0MTczLCJleHAiOjE2NTA3NTY5NzN9.N0M4tLfiFaYLz0dHOtMoYozPmDrSAYv-EWMVpO-xeY0'
    
 
 Get Animals:
-curl http://localhost:6000/mobile/api/animals | json_pp
+curl http://localhost:6000/desktop/api/animals | json_pp
 
 Post Animal:
 curl -X POST http://localhost:6000/mobile/api/animals -H 'Content-Type: application/json' -H 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI0ZTJlYjU0YTA0ZmQ2OTg5ZDU3MjJlIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjUwNTA0MTc3LCJleHAiOjE2NTA2NzY5Nzd9.V1H2lyq1hqirymJ81zveNu50rx4AGyyYKAiSVI5UdbE' -d '{"name":"snake"}'| json_pp
